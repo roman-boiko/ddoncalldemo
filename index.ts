@@ -70,7 +70,7 @@ async function demo() {
   const runId = Math.floor(Math.random() * 1_000_000);
   console.log(`Run ID: ${runId}\n`);
 
-  const teams = ["ResponderTeam1", "ResponderTeam2"];
+  const teams = ["oncalldemo"];
 
   const events = ([
     { name: "cpu-spike", host: "web-server-01", metric: "CPU", value: "45%", priority: "1" as AlertPriority },
@@ -83,7 +83,7 @@ async function demo() {
     { name: "conn-pool", host: "db-server-02", metric: "Connection Pool", value: "40%", priority: "2" as AlertPriority },
     { name: "swap-usage", host: "web-server-04", metric: "Swap Usage", value: "10%", priority: "4" as AlertPriority },
     { name: "thread-count", host: "api-server-02", metric: "Thread Count", value: "200", priority: "5" as AlertPriority },
-  ]).map((e, i) => ({ ...e, aggKey: `${e.name}-${runId}`, team: teams[i % 2] }));
+  ]).map((e) => ({ ...e, aggKey: `${e.name}-${runId}`, team: teams[0] }));
 
   // Create events with ok status
   console.log("--- Creating events with OK status ---");
